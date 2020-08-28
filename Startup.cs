@@ -28,11 +28,12 @@ namespace NG_Core_Auth
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            //Enable CORS
             services.AddCors(options =>
             {
-                options.AddPolicy("EnableCors", builder =>
+                options.AddPolicy("EnableCORS", builder =>
                 {
-                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
                 });
             });
         }
