@@ -56,5 +56,6 @@ namespace NG_Core_Auth.Controllers
             return BadRequest(new JsonResult(errorList));
         }
 
+
     }
 }
