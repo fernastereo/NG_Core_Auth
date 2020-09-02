@@ -30,7 +30,7 @@ namespace NG_Core_Auth.Controllers
             _appSettings = appSettings.Value;
         }
 
-        [HttpPost("action")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> Register ([FromBody] RegisterViewModel formData)
         {
             //Will hold all the error related to registration
@@ -49,7 +49,7 @@ namespace NG_Core_Auth.Controllers
 
                 //Sending confirmation email
 
-                return Ok(new { username = user.UserName, email = user.Email, status = 1, message = "Registration Suceedeed!" });
+                return Ok(new { username = user.UserName, email = user.Email, status = 1, message = "Registration Suceedeed madafocker!" });
             }
             else
             {
@@ -64,7 +64,7 @@ namespace NG_Core_Auth.Controllers
         }
 
         //Login Mwthod
-        [HttpPost("action")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel formData)
         {
             //Get the user from database
