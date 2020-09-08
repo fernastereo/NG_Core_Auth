@@ -27,10 +27,10 @@ import { RegisterComponent } from './register/register.component';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: '*', redirectTo: '/home' },
       { path: 'products', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: '**', redirectTo: '/home' },
     ])
   ],
   providers: [],
