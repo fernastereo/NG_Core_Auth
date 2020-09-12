@@ -97,7 +97,7 @@ namespace NG_Core_Auth.Controllers
                 //Generate the token and send it back to the client
                 var token = tokenHandler.CreateToken(tokenDescriptor);
 
-                return Ok(new { token = tokenHandler.WriteToken(token), expiration = token.ValidTo, username = user.UserName, userRole = roles.FirstOrDefault() });
+                return Ok(new { token = tokenHandler.WriteToken(token), expiration = token.ValidTo, userName = user.UserName, userRole = roles.FirstOrDefault() });
             }
 
             //Return error
