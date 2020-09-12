@@ -85,23 +85,21 @@ code {
 }
 
   .login-sec .copy-text {
-    position: absolute;
+    /*    position: absolute;
     width: 100%;
-    bottom: 20px;
+    bottom: 20px;*/
     font-size: 13px;
     text-align: center;
+    padding: 15px 0;
   }
 
-
-
-
-
   .login-sec .register-text {
-    position: absolute;
+    /*position: absolute;
     width: 100%;
-    bottom: 80px;
+    bottom: 80px;*/
     font-size: 13px;
     text-align: center;
+    padding: 15px 0;
   }
 
 
