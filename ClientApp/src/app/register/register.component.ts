@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { AccountService } from '../services/account.service';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private acct: AccountService,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
   ) { }
 
 
@@ -23,6 +25,13 @@ export class RegisterComponent implements OnInit {
   password: FormControl;
   cPassword: FormControl;
   email: FormControl;
+  modalRef: BsModalRef;
+
+  @ViewChild('template', { static: true }) modal: TemplateRef<any>;
+
+  onSubmit() {
+    this.modalRef = this.modalService.show(this.modal);
+  }
 
   //Custom validator
   mustMatch(passwordControl: AbstractControl): ValidatorFn {
@@ -50,5 +59,12 @@ export class RegisterComponent implements OnInit {
     this.password = new FormControl('', [Validators.required, Validators.minLength(5)]);
     this.cPassword = new FormControl('', [Validators.required, this.mustMatch(this.password)]);
     this.email = new FormControl('', [Validators.required]);
+
+    this.insertForm = this.fb.group({
+      'userName': this.userName,
+      'password': this.password,
+      'cPassword': this.cPassword,
+      'email': this.email
+    })
   }
 }

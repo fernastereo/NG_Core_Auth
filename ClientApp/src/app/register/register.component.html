@@ -5,12 +5,12 @@
         <h2 class="text-center">Register</h2>
         <form class="login-form" method="post" [formGroup]="insertForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="username">Username:</label>
-            <input id="username" formControlName="username" type="text" class="form-control" placeholder="" required autofocus>
-            <div *ngIf="username.touched && username.errors" class="errorMessage">
-              <span *ngIf="username.hasError('required')">UserName is required.</span>
-              <span *ngIf="username.hasError('maxlength')">Only 10 characters allowed for UserName.</span>
-              <span *ngIf="username.hasError('minlength')">Atleast 5 characters needed for UserName.</span>
+            <label for="userName">Username:</label>
+            <input id="userName" formControlName="userName" type="text" class="form-control" placeholder="" required autofocus>
+            <div *ngIf="userName.touched && userName.errors" class="errorMessage">
+              <span *ngIf="userName.hasError('required')">UserName is required.</span>
+              <span *ngIf="userName.hasError('maxlength')">Only 10 characters allowed for UserName.</span>
+              <span *ngIf="userName.hasError('minlength')">Atleast 5 characters needed for UserName.</span>
             </div>
           </div>
           <div class="form-group">
@@ -23,11 +23,11 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="cpassword">Confirm Password:</label>
-            <input id="cpassword" formControlName="cpassword" type="password" class="form-control" placeholder="" required>
-            <div *ngIf="cpassword.touched && cpassword.errors" class="errorMessage">
-              <span *ngIf="cpassword.hasError('required')">Confirm Password is required.</span>
-              <span *ngIf="cpassword.hasError('mustMatch')">Password Must Match.</span>
+            <label for="cPassword">Confirm Password:</label>
+            <input id="cPassword" formControlName="cPassword" type="password" class="form-control" placeholder="" required>
+            <div *ngIf="cPassword.touched && cPassword.errors" class="errorMessage">
+              <span *ngIf="cPassword.hasError('required')">Confirm Password is required.</span>
+              <span *ngIf="cPassword.hasError('mustMatch')">Password Must Match.</span>
             </div>
           </div>
 
