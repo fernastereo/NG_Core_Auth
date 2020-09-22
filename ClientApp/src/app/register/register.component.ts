@@ -26,10 +26,23 @@ export class RegisterComponent implements OnInit {
   cPassword: FormControl;
   email: FormControl;
   modalRef: BsModalRef;
+  invalidRegister: boolean;
+  errorList: string[];
 
   @ViewChild('template', { static: true }) modal: TemplateRef<any>;
 
   onSubmit() {
+    let userDetails = this.insertForm.value;
+    this.acct.register(userDetails.userName, userDetails.password, userDetails.email).subscribe(result =>
+    {
+      this.invalidRegister = true;
+      this.router.navigate(['/login']);
+    }, error =>
+    {
+      this.invalidRegister = false;
+      console.error(error);
+    });
+
     this.modalRef = this.modalService.show(this.modal);
   }
 
@@ -59,6 +72,7 @@ export class RegisterComponent implements OnInit {
     this.password = new FormControl('', [Validators.required, Validators.minLength(5)]);
     this.cPassword = new FormControl('', [Validators.required, this.mustMatch(this.password)]);
     this.email = new FormControl('', [Validators.required]);
+    this.errorList = [];
 
     this.insertForm = this.fb.group({
       'userName': this.userName,

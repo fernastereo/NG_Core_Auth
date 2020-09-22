@@ -15,18 +15,31 @@ export class AccountService {
 
   //Url to access to our web api
   private baseUrlLogin: string = "/api/account/login";
+  private baseUrlRegister: string = "/api/account/register";
 
   //User related properties
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
   private userName = new BehaviorSubject<string>(localStorage.getItem('username'));
   private userRole = new BehaviorSubject<string>(localStorage.getItem('userrole'));
 
+  //Register Method
+  register(userName: string, password: string, email: string) {
+    return this.http.post<any>(this.baseUrlRegister, { userName, password, email }).pipe(
+      map(result => {
+        //registration was successful
+        return result;
+      }, error => {
+          return error;
+      })
+    );
+  }
+
   //login method
-  login(username: string, password: string) {
+  login(userName: string, password: string) {
 
     //pipe lets combine multiple functions into a single function
     //pipe runs the composed functions in sequence
-    return this.http.post<any>(this.baseUrlLogin, { username, password }).pipe(
+    return this.http.post<any>(this.baseUrlLogin, { userName, password }).pipe(
       map(result => {
         //if login is successful and if there is a jwt token in the response
         if (result && result.token) {
