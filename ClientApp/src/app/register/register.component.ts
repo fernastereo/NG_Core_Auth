@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     this.acct.register(userDetails.userName, userDetails.password, userDetails.email).subscribe(result =>
     {
       this.invalidRegister = true;
-      this.router.navigate(['/login']);
+      this.router.navigate(['/loginpage']);
     }, error =>
     {
       this.invalidRegister = false;
